@@ -32,21 +32,21 @@ import pyloudnorm as pyln
 import soundfile as sf
 import io
 
-# MP3ファイルのパス
+# Path to MP3 file
 mp3_path = '/path/to/your/file.mp3'
 
-# MP3をWAVに変換し、メモリ上に保持
-audio = AudioSegment.from_file(mp3_path, format='mp3')
-wav_io = io.BytesIO()
-audio.export(wav_io, format='wav')
-wav_io.seek(0)  # バイトオブジェクトの先頭に戻る
+# Convert MP3 to WAV and hold in memory
+audio = AudioSegment.from_file(mp3_path, format='mp3') # Load the audio file
+wav_io = io.BytesIO() # Create a byte object
+audio.export(wav_io, format='wav') # Export the audio to the byte object
+wav_io.seek(0) # Return to the beginning of the byte object
 
-# バイトオブジェクトを使ってWAVデータをsf.readで読み込む
-data, sample_rate = sf.read(wav_io)
+# Read the WAV data using sf.read with the byte object
+data, sample_rate = sf.read(wav_io) 
 
-# LUFS解析
-meter = pyln.Meter(sample_rate)  # BS.1770メーターを作成
-loudness = meter.integrated_loudness(data)
+# LUFS analysis
+meter = pyln.Meter(sample_rate) # Create a BS.1770 meter
+loudness = meter.integrated_loudness(data) # Calculate the integrated loudness
 
 print(f'Integrated Loudness (LUFS): {loudness}')
 
