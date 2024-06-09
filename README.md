@@ -8,10 +8,10 @@ This repository provides a Python script to convert MP3 files to WAV format and 
 
 ## Features
 
-	•	Convert MP3 files to WAV format in memory
-	•	Perform LUFS analysis on the converted audio
+- Convert MP3 files to WAV format in memory
+- Perform LUFS analysis on the converted audio
 
-Installation
+### Installation
 
 ```bash
 !apt-get update
