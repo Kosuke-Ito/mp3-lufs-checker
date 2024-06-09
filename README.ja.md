@@ -38,9 +38,9 @@ import io
 mp3_path = '/path/to/your/file.mp3'
 
 # MP3をWAVに変換し、メモリ上に保持
-audio = AudioSegment.from_file(mp3_path, format='mp3')
-wav_io = io.BytesIO()
-audio.export(wav_io, format='wav')
+audio = AudioSegment.from_file(mp3_path, format='mp3') # オーディオファイルをロード
+wav_io = io.BytesIO() # バイトオブジェクトを作成
+audio.export(wav_io, format='wav') # オーディオをバイトオブジェクトにエクスポート
 wav_io.seek(0)  # バイトオブジェクトの先頭に戻る
 
 # バイトオブジェクトを使ってWAVデータをsf.readで読み込む
